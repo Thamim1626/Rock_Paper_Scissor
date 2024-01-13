@@ -135,3 +135,4 @@ export const ResultPerson = styled(ResultText)`
 export const ScoreText = styled.p`
   font-family: Roboto;
 `
+export const GameResultView = styled(Body)``

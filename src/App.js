@@ -4,6 +4,7 @@ import {RiCloseLine} from 'react-icons/ri'
 import GameItem from './Components/GameItem'
 import {
   MainContainer,
+  GameResultView,
   Header,
   HeaderInner,
   HeaderInnerScore,
@@ -206,15 +207,16 @@ class App extends Component {
     const oppoImageUrl = getoppoImageUrl[0].imageUrl
 
     return (
-      <Body>
+      <GameResultView>
         <ResultImage>
           <ListContainer>
             <ItemButton>
               <ResultPerson>YOU</ResultPerson>
               <ImageItem src={myImageUrl} alt="your choice" />
-            </ItemButton>{' '}
+            </ItemButton>
             <ItemButton>
               <ResultPerson>OPPONENT</ResultPerson>
+              {/* Display the opponent's choice image */}
               <ImageItem src={oppoImageUrl} alt="opponent choice" />
             </ItemButton>
           </ListContainer>
@@ -222,32 +224,34 @@ class App extends Component {
         <ResultText>{result}</ResultText>
         <ResultButton onClick={this.onClickToHome}>PLAY AGAIN</ResultButton>
         <Rules>
-          <Popup
-            trigger={<RulesButton className="button">Rules </RulesButton>}
-            modal
-            nested
-          >
-            {close => (
-              <ModalContainer>
-                <InnerModelContainer>
-                  <RulesButtonClose
-                    className="button"
-                    onClick={() => {
-                      close()
-                    }}
-                  >
-                    <RiCloseLine />
-                  </RulesButtonClose>
-                  <ModalImage
-                    src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png"
-                    alt="rules"
-                  />
-                </InnerModelContainer>
-              </ModalContainer>
-            )}
-          </Popup>
+          <Rules>
+            <Popup
+              trigger={<RulesButton className="button">Rules </RulesButton>}
+              modal
+              nested
+            >
+              {close => (
+                <ModalContainer>
+                  <InnerModelContainer>
+                    <RulesButtonClose
+                      className="button"
+                      onClick={() => {
+                        close()
+                      }}
+                    >
+                      <RiCloseLine />
+                    </RulesButtonClose>
+                    <ModalImage
+                      src="https://assets.ccbp.in/frontend/react-js/rock-paper-scissor/rules-image.png"
+                      alt="rules"
+                    />
+                  </InnerModelContainer>
+                </ModalContainer>
+              )}
+            </Popup>
+          </Rules>
         </Rules>
-      </Body>
+      </GameResultView>
     )
   }
 
